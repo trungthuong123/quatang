@@ -1,0 +1,81 @@
+.fireworks {
+    position: fixed;
+    width: 25%;
+    z-index: 99;
+}
+
+.left-firework {
+    left: 0;
+    bottom: 0;
+}
+
+.right-firework {
+    right: 0;
+    bottom: 0;
+}
+.top-firework {
+    left: 0;
+    top: 0;
+    transform: rotate(-180deg);
+}
+.bottom-firework {
+    right: 0;
+    top: 0;
+    transform: rotate(180deg);
+
+}
+
+
+
+
+.shakeleft{
+    left: 5%;
+}
+.shakeright{
+    right: 5%;
+}
+@keyframes shake {
+    0% { transform: translate(0, 0) scale(1); }
+    10%, 90% { transform: translate(-5px, 0) scale(1.1); }
+    20%, 80% { transform: translate(5px, 0) scale(0.9); }
+    30%, 50%, 70% { transform: translate(-5px, 0) scale(1.1); }
+    40%, 60% { transform: translate(5px, 0) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+.shaking-image {
+    z-index: 100;
+    animation: shake 1s infinite;
+    position: fixed;
+    height: 40vh;
+    width: auto;
+    top: 30%
+}
+
+
+
+.arow {
+    position: fixed;
+    width: 20%;
+    z-index: 99;
+}
+.top-left{
+    left: 5%;
+    top: 5%;
+    transform: rotate(220deg);
+}
+.top-right{
+    right: 5%;
+    top: 5%;
+    transform: rotate(-30deg);
+}
+.bottom-left{
+    left: 5%;
+    bottom: 5%;
+    transform: rotate(140deg);
+}
+.bottom-right{
+    right: 5%;
+    bottom: 5%;
+    transform: rotate(30deg);
+}
